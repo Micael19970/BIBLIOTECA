@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca Digital Premium – +100 Livros em PDF</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Swiper.js CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Google Fonts (opcional, para tipografia moderna) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bg-books {
+      background-image: url('https://www.transparenttextures.com/patterns/book-cover.png');
+      background-repeat: repeat;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .swiper-pagination-bullet-active { background: #6366f1 !important; }
+    .whatsapp-balloon {
+      background: #fff;
+      border-radius: 1.2rem 1.2rem 1.2rem 0.3rem;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+      position: relative;
+    }
+    .whatsapp-balloon::before {
+      content: '';
+      position: absolute;
+      left: 0.7rem;
+      bottom: -0.7rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background: #fff;
+      border-left: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      border-radius: 0 0 0 1.2rem;
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header Fixo -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-xl border-b border-gray-200/50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+          <span class="text-white text-xl font-bold">📚</span>
+        </div>
+        <div class="font-extrabold text-xl text-gray-800">
+          <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Biblioteca</span>
+          <span class="text-gray-600">Digital Premium</span>
+        </div>
+      </div>
+      
+      <!-- Menu Desktop -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#conteudo" class="text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium relative group">
+          Conteúdo
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#provas" class="text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium relative group">
+          Depoimentos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#faq" class="text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium relative group">
+          FAQ
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-200 group-hover:w-full"></span>
+        </a>
+      </nav>
+      
+      <!-- CTA Button -->
+      <div class="flex items-center gap-3">
+        <!-- Badge de urgência no header -->
+        <div class="hidden sm:flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+          <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+          92% OFF
+        </div>
+        
+        <a href="#cta-final" class="group relative">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 transition-all duration-300 rounded-xl px-6 py-3 text-white font-bold shadow-lg hover:shadow-green-500/25 hover:scale-105 active:scale-95">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🚀</span>
+              <span>Quero Agora</span>
+            </div>
+          </div>
+          <!-- Efeito de brilho no hover -->
+          <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
+        </a>
+        
+        <!-- Menu Mobile Button -->
+        <button class="lg:hidden p-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200" id="mobile-menu-btn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Menu Mobile -->
+    <div class="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50 hidden" id="mobile-menu">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#conteudo" class="block text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium py-2">
+          📚 Conteúdo
+        </a>
+        <a href="#provas" class="block text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium py-2">
+          💬 Depoimentos
+        </a>
+        <a href="#faq" class="block text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium py-2">
+          ❓ FAQ
+        </a>
+        <div class="pt-3 border-t border-gray-200">
+          <a href="#cta-final" class="block w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white text-center py-3 rounded-xl font-bold shadow-lg">
+            🚀 Quero meu Pack Agora
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-20 pb-16 overflow-hidden">
+    <!-- Fundo com gradiente complexo e textura -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"></div>
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="absolute inset-0 bg-books"></div>
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"dots\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"10\" cy=\"10\" r=\"1\" fill=\"white\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23dots)\"/></svg>');"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <!-- Badge de urgência -->
+      <div class="text-center mb-8 pt-8">
+        <div class="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-full text-sm font-bold animate-pulse shadow-lg">
+          <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
+          🔥 OFERTA RELÂMPAGO - 92% OFF
+        </div>
+      </div>
+      
+      <!-- Layout em duas colunas -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Coluna esquerda - Texto -->
+        <div class="text-center lg:text-left">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-2xl mb-6 leading-tight">
+            <span class="block">Tenha <span class="text-yellow-300 bg-black/20 px-2 py-1 rounded-lg">+100 Livros</span></span>
+            <span class="block text-3xl sm:text-4xl lg:text-5xl mt-2 bg-black/30 px-3 py-2 rounded-lg">em PDF por Apenas</span>
+            <span class="block text-5xl sm:text-6xl lg:text-7xl text-green-300 mt-2 bg-black/40 px-4 py-3 rounded-xl">R$ 11,99</span>
+          </h1>
+          
+          <p class="text-lg sm:text-xl text-white font-medium mb-8 leading-relaxed bg-black/30 px-4 py-3 rounded-lg">
+            Baixe, leia, imprima e receba <strong class="text-yellow-300">novos títulos toda semana</strong> sem custo adicional!
+          </p>
+          
+          <!-- Preço comparativo -->
+          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-8">
+            <div class="text-center bg-black/40 rounded-lg p-4">
+              <div class="text-sm text-gray-200 mb-1">De</div>
+              <div class="text-3xl font-bold line-through text-red-600">R$ 149,70</div>
+              <div class="text-xs text-gray-200">Valor individual</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="text-2xl text-yellow-300 bg-black/30 px-2 py-1 rounded-lg">→</div>
+            </div>
+            <div class="text-center bg-green-600/20 rounded-lg p-4 border border-green-400/30">
+              <div class="text-sm text-yellow-300 mb-1">Por apenas</div>
+              <div class="text-4xl font-extrabold text-green-300">R$ 11,99</div>
+              <div class="text-xs text-green-200">Pagamento único</div>
+            </div>
+          </div>
+          
+          <!-- CTA Principal -->
+          <div class="space-y-4">
+            <a href="#cta-final" class="group inline-block w-full sm:w-auto">
+              <div class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 transition-all duration-300 rounded-2xl p-6 shadow-2xl hover:shadow-green-500/25 hover:scale-105 active:scale-95">
+                <div class="flex items-center justify-center gap-3 text-center">
+                  <span class="text-2xl">📚</span>
+                  <span class="text-xl sm:text-2xl font-extrabold">Garantir meu Pack Agora</span>
+                  <span class="text-2xl">🚀</span>
+                </div>
+                <div class="text-sm mt-2 opacity-90 text-center">Clique aqui para começar</div>
+              </div>
+            </a>
+            
+            <!-- Garantias -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-sm">
+              <div class="flex items-center gap-2 bg-black/30 px-3 py-2 rounded-lg">
+                <span class="text-green-400 text-lg">✓</span>
+                <span class="font-medium text-white">Entrega imediata</span>
+              </div>
+              <div class="flex items-center gap-2 bg-black/30 px-3 py-2 rounded-lg">
+                <span class="text-green-400 text-lg">✓</span>
+                <span class="font-medium text-white">Garantia de 7 dias</span>
+              </div>
+              <div class="flex items-center gap-2 bg-black/30 px-3 py-2 rounded-lg">
+                <span class="text-green-400 text-lg">✓</span>
+                <span class="font-medium text-white">Suporte 24/7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Coluna direita - Carrossel de capas -->
+        <div class="relative">
+          <div class="w-full max-w-3xl mx-auto">
+            <div class="swiper heroSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="dom-casmurro.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="orgulho-e-preconceito.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="morro-dos-ventos-uivantes.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="a-menina-que-roubava-livros.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="a-revolução-dos-bichoos.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="o-homem-mais-rico-da-babilonia.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="pai-rico-pai-pobre.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="o-pequeno-principe.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide flex justify-center items-center">
+                  <div class="relative group">
+                    <div class="w-56 h-80 sm:w-64 sm:h-96 bg-white rounded-3xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center">
+                      <img src="morangos-morfados.jpg" alt="Capa Livro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      ✓
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination mt-6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Benefícios em destaque -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
+        <div class="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-white/30 text-center hover:bg-black/50 transition-all duration-300">
+          <div class="text-4xl mb-3">📚</div>
+          <div class="font-bold text-white text-xl mb-2">100+ Livros</div>
+          <div class="text-sm text-gray-200">Títulos cuidadosamente selecionados</div>
+        </div>
+        <div class="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-white/30 text-center hover:bg-black/50 transition-all duration-300">
+          <div class="text-4xl mb-3">⚡</div>
+          <div class="font-bold text-white text-xl mb-2">Entrega Imediata</div>
+          <div class="text-sm text-gray-200">Download instantâneo após compra</div>
+        </div>
+        <div class="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-white/30 text-center hover:bg-black/50 transition-all duration-300">
+          <div class="text-4xl mb-3">♾️</div>
+          <div class="font-bold text-white text-xl mb-2">Acesso Vitalício</div>
+          <div class="text-sm text-gray-200">Sem mensalidades ou taxas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gatilhos Mentais: Dores e Soluções -->
+  <section class="py-20 bg-gradient-to-br from-red-50 via-yellow-50 to-green-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">Por que essa Biblioteca é para você?</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Veja se você se identifica com essas situações e descubra como resolvê-las de uma vez por todas:</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Card Dores -->
+        <div class="group relative bg-gradient-to-br from-red-100 to-yellow-50 rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-red-200">
+          <div class="absolute top-4 right-4 w-14 h-14 bg-red-500 rounded-full flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-lg">
+            😩
+          </div>
+          <h3 class="text-2xl font-bold text-red-700 mb-6">Dores de quem ama ler</h3>
+          <ul class="space-y-4 text-lg text-gray-700 font-medium">
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-red-400 rounded-full"></span> Já perdeu horas procurando aquele livro raro e não encontrou?</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-red-400 rounded-full"></span> Cansou de gastar uma fortuna em livros digitais que lê só uma vez?</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-red-400 rounded-full"></span> Sente que está ficando para trás por não ter acesso fácil ao melhor da literatura e do desenvolvimento pessoal?</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-red-400 rounded-full"></span> Tem medo de cair em sites duvidosos ou baixar arquivos de baixa qualidade?</li>
+          </ul>
+        </div>
+        <!-- Card Soluções -->
+        <div class="group relative bg-gradient-to-br from-green-100 to-emerald-50 rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-200">
+          <div class="absolute top-4 right-4 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-lg">
+            🚀
+          </div>
+          <h3 class="text-2xl font-bold text-green-700 mb-6">Soluções que só aqui você encontra</h3>
+          <ul class="space-y-4 text-lg text-gray-700 font-medium">
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-green-400 rounded-full"></span> Encontre tudo em um só lugar: clássicos, best-sellers e novidades, prontos para baixar.</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-green-400 rounded-full"></span> Pague uma única vez e tenha acesso vitalício a uma seleção premium, sem surpresas ou taxas escondidas.</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-green-400 rounded-full"></span> Leia onde e quando quiser: no celular, tablet, computador ou até no Kindle.</li>
+            <li class="flex items-center gap-3"><span class="w-3 h-3 bg-green-400 rounded-full"></span> Receba novos títulos toda semana, com qualidade garantida e suporte sempre à disposição.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo do Produto -->
+  <section id="conteudo" class="bg-gradient-to-br from-gray-50 to-blue-50 py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">O Que Você Recebe no Pack</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Mais de 100 títulos cuidadosamente selecionados, organizados em categorias premium para maximizar seu aprendizado e entretenimento.</p>
+      </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <!-- Card 1 - Clássicos -->
+      <div class="group relative bg-gradient-to-br from-indigo-50 to-blue-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-indigo-200">
+        <div class="absolute top-4 right-4 w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform duration-300">
+          📚
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-bold text-indigo-800 mb-3">Coleção de Clássicos</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">35+ Títulos</span>
+            <span class="text-gray-500 line-through text-sm">R$ 49,90</span>
+          </div>
+        </div>
+        <ul class="space-y-2 text-gray-700 mb-6">
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+            Machado de Assis, José de Alencar
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+            Shakespeare, Victor Hugo
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+            Dostoiévski, Tolstói
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+            + 30 outros clássicos
+          </li>
+        </ul>
+        <div class="text-center">
+          <span class="text-2xl font-extrabold text-indigo-600">GRÁTIS</span>
+        </div>
+      </div>
+
+      <!-- Card 2 - Desenvolvimento Pessoal -->
+      <div class="group relative bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-200">
+        <div class="absolute top-4 right-4 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform duration-300">
+          🚀
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-bold text-green-800 mb-3">Desenvolvimento Pessoal</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">40+ Títulos</span>
+            <span class="text-gray-500 line-through text-sm">R$ 39,90</span>
+          </div>
+        </div>
+        <ul class="space-y-2 text-gray-700 mb-6">
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            Mindset, Hábitos Atômicos
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            PNL, Inteligência Emocional
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            Produtividade, Liderança
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            + 35 outros best-sellers
+          </li>
+        </ul>
+        <div class="text-center">
+          <span class="text-2xl font-extrabold text-green-600">GRÁTIS</span>
+        </div>
+      </div>
+
+      <!-- Card 3 - Obras Primas -->
+      <div class="group relative bg-gradient-to-br from-yellow-50 to-amber-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-yellow-200">
+        <div class="absolute top-4 right-4 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform duration-300">
+          ⭐
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-bold text-yellow-800 mb-3">Obras Primas</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">25+ Títulos</span>
+            <span class="text-gray-500 line-through text-sm">R$ 59,90</span>
+          </div>
+        </div>
+        <ul class="space-y-2 text-gray-700 mb-6">
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+            Prêmios Nobel, Pulitzer
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+            Edições raras e exclusivas
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+            Biografias de gênios
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+            + 20 obras premiadas
+          </li>
+        </ul>
+        <div class="text-center">
+          <span class="text-2xl font-extrabold text-yellow-600">GRÁTIS</span>
+        </div>
+      </div>
+    </div>
+
+      <!-- Resumo de Economia -->
+      <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-10 text-center text-white shadow-2xl">
+        <h3 class="text-3xl font-bold mb-6">💰 Economia Total</h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+          <div class="text-center">
+            <div class="text-5xl font-extrabold line-through text-red-600">R$ 149,70</div>
+            <div class="text-sm text-gray-200">Valor individual</div>
+          </div>
+          <div class="text-5xl">→</div>
+          <div class="text-center">
+            <div class="text-6xl font-extrabold text-yellow-300">R$ 11,99</div>
+            <div class="text-sm text-gray-200">Preço promocional</div>
+          </div>
+        </div>
+        <div class="bg-white/20 rounded-2xl p-6">
+          <div class="text-2xl font-bold mb-2">🎯 Você economiza R$ 137,71</div>
+          <div class="text-base opacity-90">92% de desconto + Acesso vitalício + Atualizações semanais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provas Sociais (Carrossel) -->
+  <section id="provas" class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">Depoimentos Reais de Nossos Leitores</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Mais de 2.500 pessoas já transformaram suas vidas com nossa biblioteca digital. Veja o que elas dizem:</p>
+      </div>
+      
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-1">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <span class="text-white text-xl">📱</span>
+                </div>
+                <div>
+                  <div class="font-bold text-green-600 text-sm">WhatsApp Business</div>
+                  <div class="text-xs text-gray-500">Há 2 horas</div>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-2xl p-4 mb-4">
+                <img src="img_0137.png" alt="Print Cliente" class="rounded-xl shadow-sm w-full max-w-xs mx-auto">
+              </div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="flex text-yellow-400">
+                  ⭐⭐⭐⭐⭐
+                </div>
+                <span class="text-sm font-semibold text-gray-700">5.0</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                  <div>
+                    <div class="font-semibold text-gray-800 text-sm">Maria Silva</div>
+                    <div class="text-xs text-gray-500">Comprou há 3 dias</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-1">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <span class="text-white text-xl">📱</span>
+                </div>
+                <div>
+                  <div class="font-bold text-green-600 text-sm">WhatsApp Business</div>
+                  <div class="text-xs text-gray-500">Há 1 dia</div>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-2xl p-4 mb-4">
+                <img src="img_0136.png" alt="Print Cliente" class="rounded-xl shadow-sm w-full max-w-xs mx-auto">
+              </div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="flex text-yellow-400">
+                  ⭐⭐⭐⭐⭐
+                </div>
+                <span class="text-sm font-semibold text-gray-700">5.0</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">J</div>
+                  <div>
+                    <div class="font-semibold text-gray-800 text-sm">João Santos</div>
+                    <div class="text-xs text-gray-500">Comprou há 1 semana</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-1">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <span class="text-white text-xl">📱</span>
+                </div>
+                <div>
+                  <div class="font-bold text-green-600 text-sm">WhatsApp Business</div>
+                  <div class="text-xs text-gray-500">Há 2 dias</div>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-2xl p-4 mb-4">
+                <img src="img_0138.png" alt="Print Cliente" class="rounded-xl shadow-sm w-full max-w-xs mx-auto">
+              </div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="flex text-yellow-400">
+                  ⭐⭐⭐⭐⭐
+                </div>
+                <span class="text-sm font-semibold text-gray-700">5.0</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">A</div>
+                  <div>
+                    <div class="font-semibold text-gray-800 text-sm">Ana Costa</div>
+                    <div class="text-xs text-gray-500">Comprou há 5 dias</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Paginação e navegação -->
+        <div class="swiper-pagination mt-8"></div>
+        <div class="flex justify-center gap-3 mt-4">
+          <button class="swiper-button-prev !static !w-12 !h-12 !rounded-full !bg-white !shadow-lg !text-indigo-600 hover:!bg-indigo-50 transition-all duration-200 !border !border-gray-200">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="swiper-button-next !static !w-12 !h-12 !rounded-full !bg-white !shadow-lg !text-indigo-600 hover:!bg-indigo-50 transition-all duration-200 !border !border-gray-200">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Estatísticas -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="text-center bg-white rounded-2xl p-6 shadow-lg">
+          <div class="text-3xl font-extrabold text-indigo-600 mb-2">2.500+</div>
+          <div class="text-gray-600 font-semibold">Clientes Satisfeitos</div>
+        </div>
+        <div class="text-center bg-white rounded-2xl p-6 shadow-lg">
+          <div class="text-3xl font-extrabold text-green-600 mb-2">4.9/5</div>
+          <div class="text-gray-600 font-semibold">Avaliação Média</div>
+        </div>
+        <div class="text-center bg-white rounded-2xl p-6 shadow-lg">
+          <div class="text-3xl font-extrabold text-yellow-600 mb-2">100+</div>
+          <div class="text-gray-600 font-semibold">Títulos Disponíveis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-gradient-to-br from-indigo-50 to-purple-50 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">Perguntas Frequentes</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Tire suas dúvidas sobre nossa biblioteca digital premium. Aqui estão as respostas para as perguntas mais comuns:</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- FAQ Item 1 -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-indigo-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center group-hover:bg-indigo-200 transition-colors duration-200">
+                <span class="text-indigo-600 text-lg">📧</span>
+              </div>
+              <span class="text-lg">Como vou receber os livros?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-8 pb-6 text-gray-700 text-base leading-relaxed hidden">
+            <div class="bg-indigo-50 rounded-xl p-4">
+              <p class="mb-3">Você recebe <strong>imediatamente</strong> após a compra através de:</p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                  E-mail com link de download direto
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                  Acesso à área de membros exclusiva
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                  Suporte via WhatsApp para dúvidas
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-green-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
+                <span class="text-green-600 text-lg">📱</span>
+              </div>
+              <span class="text-lg">Posso ler no celular?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-8 pb-6 text-gray-700 text-base leading-relaxed hidden">
+            <div class="bg-green-50 rounded-xl p-4">
+              <p class="mb-3"><strong>Sim!</strong> Os PDFs são compatíveis com:</p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Smartphones (Android e iOS)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Tablets e iPads
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Computadores (Windows, Mac, Linux)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Kindle e outros e-readers
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-purple-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-200">
+                <span class="text-purple-600 text-lg">🔄</span>
+              </div>
+              <span class="text-lg">Terei acesso às atualizações?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-8 pb-6 text-gray-700 text-base leading-relaxed hidden">
+            <div class="bg-purple-50 rounded-xl p-4">
+              <p class="mb-3"><strong>Claro!</strong> Você recebe automaticamente:</p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  Novos títulos adicionados semanalmente
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  Notificações por e-mail sobre atualizações
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  Acesso vitalício a todo o conteúdo
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  Sem custos adicionais
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-yellow-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center group-hover:bg-yellow-200 transition-colors duration-200">
+                <span class="text-yellow-600 text-lg">💳</span>
+              </div>
+              <span class="text-lg">Preciso pagar mensalidade?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-8 pb-6 text-gray-700 text-base leading-relaxed hidden">
+            <div class="bg-yellow-50 rounded-xl p-4">
+              <p class="mb-3"><strong>Não!</strong> É um pagamento único que inclui:</p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                  Acesso vitalício à biblioteca
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                  Sem mensalidades ou taxas recorrentes
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                  Todas as atualizações futuras inclusas
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                  Suporte técnico gratuito
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 - Garantia -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-red-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
+                <span class="text-red-600 text-lg">🛡️</span>
+              </div>
+              <span class="text-lg">Qual é a garantia oferecida?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong>Oferecemos uma garantia incondicional de 7 dias!</strong>
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <strong>Reembolso total</strong> se não ficar satisfeito
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <strong>Sem perguntas</strong> - processo 100% automático
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <strong>Dinheiro de volta</strong> em até 24 horas
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <strong>Sem burocracia</strong> - apenas um clique
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 - Formato dos Arquivos -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
+          <button type="button" class="w-full flex justify-between items-center px-8 py-6 text-left font-bold text-blue-800 focus:outline-none faq-toggle group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
+                <span class="text-blue-600 text-lg">📄</span>
+              </div>
+              <span class="text-lg">Em que formato estão os livros?</span>
+            </div>
+            <svg class="w-6 h-6 transition-transform duration-300 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong>Todos os livros estão em formato PDF de alta qualidade!</strong>
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>PDF otimizado</strong> para leitura digital
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>Qualidade HD</strong> - textos nítidos e legíveis
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>Compatível</strong> com todos os dispositivos
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>Imprimível</strong> - pode imprimir se desejar
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>Tamanho otimizado</strong> - downloads rápidos
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Suporte -->
+      <div class="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 text-center text-white">
+        <h3 class="text-2xl font-bold mb-4">Ainda tem dúvidas?</h3>
+        <p class="text-lg mb-6 opacity-90">Nossa equipe de suporte está pronta para ajudar você!</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#" class="bg-white text-indigo-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center gap-2">
+            <span>💬</span>
+            WhatsApp Suporte
+          </a>
+          <a href="#" class="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors duration-200 flex items-center justify-center gap-2">
+            <span>📧</span>
+            E-mail Suporte
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section id="cta-final" class="relative py-20 px-4 overflow-hidden">
+    <!-- Fundo com gradiente e padrão -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"white\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>');"></div>
+    
+    <div class="relative z-10 max-w-5xl mx-auto text-center text-white">
+      <!-- Badge de urgência -->
+      <div class="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
+        <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
+        OFERTA LIMITADA - Restam poucas vagas!
+      </div>
+      
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+        Construa sua <span class="text-yellow-300">Biblioteca Digital</span><br>
+        <span class="text-green-300">Hoje Mesmo</span>
+      </h2>
+      
+      <p class="text-xl sm:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+        Mais de 100 livros em PDF por um preço que você nunca viu antes!
+      </p>
+      
+      <!-- Preço destacado -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 max-w-2xl mx-auto border border-white/20">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <div class="text-center">
+            <div class="text-2xl text-gray-300 mb-1">De</div>
+            <div class="text-4xl sm:text-5xl font-extrabold line-through text-red-600">R$ 149,70</div>
+            <div class="text-sm text-gray-300">Valor individual</div>
+          </div>
+          <div class="text-4xl text-yellow-300">→</div>
+          <div class="text-center">
+            <div class="text-2xl text-yellow-300 mb-1">Por apenas</div>
+            <div class="text-5xl sm:text-6xl font-extrabold text-green-300">R$ 11,99</div>
+            <div class="text-sm text-green-200">Pagamento único</div>
+          </div>
+        </div>
+        
+        <!-- Economia destacada -->
+        <div class="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-4">
+          <div class="text-2xl font-bold mb-1">🎯 Você economiza R$ 137,71</div>
+          <div class="text-sm opacity-90">92% de desconto + Acesso vitalício</div>
+        </div>
+      </div>
+      
+      <!-- Benefícios em destaque -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl mb-2">📚</div>
+          <div class="font-bold text-lg">100+ Livros</div>
+          <div class="text-sm text-gray-300">Títulos selecionados</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl mb-2">🔄</div>
+          <div class="font-bold text-lg">Atualizações</div>
+          <div class="text-sm text-gray-300">Novos títulos semanais</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+          <div class="text-3xl mb-2">♾️</div>
+          <div class="font-bold text-lg">Acesso Vitalício</div>
+          <div class="text-sm text-gray-300">Sem mensalidades</div>
+        </div>
+      </div>
+      
+      <!-- CTA Principal -->
+      <div class="space-y-4">
+        <a href="#" class="group inline-block w-full sm:w-auto">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 transition-all duration-300 rounded-2xl p-6 shadow-2xl hover:shadow-green-500/25 hover:scale-105 active:scale-95">
+            <div class="flex items-center justify-center gap-3">
+              <span class="text-2xl">📚</span>
+              <span class="text-2xl font-extrabold">Quero meu Pack de +100 Livros Agora</span>
+              <span class="text-2xl">🚀</span>
+            </div>
+            <div class="text-sm mt-2 opacity-90">Clique aqui para garantir sua vaga</div>
+          </div>
+        </a>
+        
+        <!-- Garantias -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-300">
+          <div class="flex items-center gap-2">
+            <span class="text-green-400">✓</span>
+            <span>Entrega imediata</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-400">✓</span>
+            <span>Garantia de 7 dias</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-400">✓</span>
+            <span>Suporte 24/7</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contador de urgência -->
+      <div class="mt-8 bg-red-500/20 backdrop-blur-sm rounded-2xl p-4 border border-red-500/30 max-w-md mx-auto">
+        <div class="text-sm text-red-200 mb-2">⏰ Oferta expira em:</div>
+        <div id="countdown" class="flex justify-center gap-2 text-2xl font-bold text-red-300">
+          <div class="bg-red-500/30 rounded-lg px-3 py-2" id="hours">23</div>
+          <span>:</span>
+          <div class="bg-red-500/30 rounded-lg px-3 py-2" id="minutes">59</div>
+          <span>:</span>
+          <div class="bg-red-500/30 rounded-lg px-3 py-2" id="seconds">45</div>
+        </div>
+        <div class="text-xs text-red-200 mt-1">horas : minutos : segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-gray-900 py-12 text-center text-gray-400">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6 mb-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <span class="text-white text-xl font-bold">📚</span>
+          </div>
+          <div class="font-bold text-xl text-white">
+            <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Biblioteca</span>
+            <span class="text-gray-300">Digital Premium</span>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-indigo-400 transition-colors duration-200 font-medium">Termos de Uso</a>
+          <a href="#" class="hover:text-indigo-400 transition-colors duration-200 font-medium">Política de Privacidade</a>
+          <a href="#" class="hover:text-indigo-400 transition-colors duration-200 font-medium">Suporte</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6">
+        <p class="text-sm">
+          &copy; 2024 Biblioteca Digital Premium. Todos os direitos reservados.
+        </p>
+        <p class="text-xs mt-2 text-gray-500">
+          Este site não é afiliado ao Facebook ou qualquer entidade do Facebook.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Swiper e FAQ Accordion -->
+  <script>
+    // Swiper.js init para provas sociais
+    const swiper = new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.2 },
+        768: { slidesPerView: 1.5 },
+      }
+    });
+    // Swiper.js para o mockup do Hero (capas lado a lado)
+    const heroSwiper = new Swiper('.heroSwiper', {
+      slidesPerView: 2,
+      spaceBetween: 16,
+      loop: true,
+      autoplay: {
+        delay: 1800,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.heroSwiper .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 3, spaceBetween: 20 },
+        1024: { slidesPerView: 4, spaceBetween: 24 },
+      },
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const content = this.parentElement.querySelector('.faq-content');
+        const icon = this.querySelector('svg');
+        if (content.classList.contains('hidden')) {
+          document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+          document.querySelectorAll('.faq-toggle svg').forEach(i => i.classList.remove('rotate-180'));
+          content.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+        } else {
+          content.classList.add('hidden');
+          icon.classList.remove('rotate-180');
+        }
+      });
+    });
+
+    // Menu Mobile Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Fechar menu ao clicar em um link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Cronômetro de urgência
+    function startCountdown() {
+      // Função para gerar tempo aleatório entre 3 e 15 minutos
+      function getRandomTime() {
+        const minMinutes = 3;
+        const maxMinutes = 15;
+        const randomMinutes = Math.floor(Math.random() * (maxMinutes - minMinutes + 1)) + minMinutes;
+        const randomSeconds = Math.floor(Math.random() * 60);
+        return randomMinutes * 60 + randomSeconds;
+      }
+      
+      let totalSeconds = getRandomTime();
+      
+      function updateCountdown() {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        
+        // Atualizar elementos HTML
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        
+        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+        
+        // Decrementar tempo
+        totalSeconds--;
+        
+        // Se chegou a zero, reiniciar com novo tempo aleatório
+        if (totalSeconds < 0) {
+          totalSeconds = getRandomTime();
+        }
+      }
+      
+      // Atualizar imediatamente
+      updateCountdown();
+      
+      // Atualizar a cada segundo
+      setInterval(updateCountdown, 1000);
+    }
+
+    // Iniciar cronômetro quando a página carregar
+    document.addEventListener('DOMContentLoaded', startCountdown);
+  </script>
+</body>
+</html>
